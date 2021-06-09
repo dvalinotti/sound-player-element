@@ -37,6 +37,8 @@ export class SoundPlayer extends LitElement {
 
     firstUpdated() {
         super.connectedCallback();
+        
+        if (!this.src) throw new Error('Must provide audio source');
 
         const AudioContext = window.AudioContext;
 
@@ -110,8 +112,7 @@ export class SoundPlayer extends LitElement {
 
     _logState() {
         console.log(this._audioContext);
-        console.log(this._audioElement?.currentTime);
-        console.log(this._audioElement?.duration);
+        console.log(this._audioElement);
     }
 
     formatTime(seconds: number) {
@@ -130,7 +131,7 @@ export class SoundPlayer extends LitElement {
         return html`
             <audio id="audio-el"></audio>
             <p>${this.formatTime(this.currentTime)}</p>
-            <input type="range" value=${this.percentDone} readonly>
+            <input type="range" value=${this.percentDone} min="0" max="100">
             <p>${this.formatTime(this._duration as number)}</p>
             <button @click=${this._togglePlayTrack} role="switch">
                 ${this.isPlaying ? 'Pause' : 'Play'}
