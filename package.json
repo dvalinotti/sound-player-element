@@ -12,7 +12,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "lit": "^2.0.0-rc.2"
@@ -20,5 +21,13 @@
   "devDependencies": {
     "@types/node": "^15.12.1",
     "vite": "^2.3.6"
-  }
+  },
+  "keywords": [
+    "lit",
+    "lit-element",
+    "web component",
+    "web audio api",
+    "web audio",
+    "audio"
+  ]
 }
