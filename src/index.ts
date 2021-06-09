@@ -15,16 +15,16 @@ export class SoundPlayer extends LitElement {
     src!: string;
 
     @property({ attribute: false })
-    _track: MediaElementAudioSourceNode | undefined;
-
-    @property({ attribute: false })
     _audioContext: AudioContext | undefined;
 
     @property({ attribute: false })
     _audioElement: HTMLAudioElement | null | undefined;
 
     @property({ attribute: false })
-    isPlaying: Boolean = false;
+    _duration: Number = 0;
+
+    @state()
+    protected isPlaying: Boolean = false;
 
     @state()
     protected currentTime: number = 0;
@@ -39,14 +39,20 @@ export class SoundPlayer extends LitElement {
         super.connectedCallback();
 
         const AudioContext = window.AudioContext;
+
         if (AudioContext) {
             this._audioContext = new AudioContext();
             this._audioElement = this.shadowRoot?.querySelector('#audio-el');
     
             if (this._audioElement instanceof HTMLAudioElement) {
                 this._audioElement.src = this.src;
-                this._track = this._audioContext.createMediaElementSource(this._audioElement);
-                this._track.connect(this._audioContext.destination);
+                const track = this._audioContext.createMediaElementSource(this._audioElement);
+                track.connect(this._audioContext.destination);
+
+                setTimeout(() => {
+                    console.log(this._audioElement?.duration);
+                    this._duration = this._audioElement?.duration || 0;
+                }, 1)
             }
         }
     }
@@ -81,7 +87,7 @@ export class SoundPlayer extends LitElement {
     }
 
     _togglePlayTrack() {
-        if (this._track && this._audioContext && this._audioElement) {
+        if (this._audioContext && this._audioElement) {
             console.log(this._audioContext.state)
             if (this._audioContext.state === 'suspended') {
                 this._audioContext.resume();
@@ -108,10 +114,24 @@ export class SoundPlayer extends LitElement {
         console.log(this._audioElement?.duration);
     }
 
+    formatTime(seconds: number) {
+        const h = Math.floor(seconds / 3600);
+        const m = Math.floor(seconds / 60);
+        const s = Math.round(seconds - (m * 60));
+
+        const hrs = `${h < 10 ? '0' : ''}${h}`;
+        const mins = `${m < 10 ? '0' : ''}${m}`;
+        const secs = `${s < 10 ? '0' : ''}${s}`;
+
+        return `${hrs}:${mins}:${secs}`;
+    }
+
     render() {
         return html`
             <audio id="audio-el"></audio>
+            <p>${this.formatTime(this.currentTime)}</p>
             <input type="range" value=${this.percentDone} readonly>
+            <p>${this.formatTime(this._duration as number)}</p>
             <button @click=${this._togglePlayTrack} role="switch">
                 ${this.isPlaying ? 'Pause' : 'Play'}
             </button>
