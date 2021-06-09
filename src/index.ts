@@ -1,118 +1,51 @@
 import { LitElement, html, css } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
+import { WebAudioPlayer } from "./web-audio";
 
 @customElement("sound-player")
-export class SoundPlayer extends LitElement {
+export class SoundPlayer extends WebAudioPlayer(LitElement) {
     static styles = [
         css`
             :host {
-                display: block;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+            }
+            :host input {
+                margin: 0 0.5rem;
+            }
+            :host button {
+                margin: 0.5rem;
+                padding: 0.25rem 0.5rem;
             }
         `
     ];
 
     @property({ attribute: true })
-    src!: string;
-
-    @property({ attribute: false })
-    _audioContext: AudioContext | undefined;
-
-    @property({ attribute: false })
-    _audioElement: HTMLAudioElement | null | undefined;
-
-    @property({ attribute: false })
-    _duration: Number = 0;
-
-    @state()
-    protected isPlaying: Boolean = false;
-
-    @state()
-    protected currentTime: number = 0;
-
-    @state()
-    protected timeTracker: any;
-
-    @state()
-    protected percentDone: number = 0;
+    id!: string;
 
     firstUpdated() {
-        super.connectedCallback();
-        
-        if (!this.src) throw new Error('Must provide audio source');
+        const audioElement = this.shadowRoot?.querySelector(`#${this.id}`);
 
-        const AudioContext = window.AudioContext;
+        if (!audioElement) throw new Error('<audio> element with provided ID not found in Shadow DOM.');
 
-        if (AudioContext) {
-            this._audioContext = new AudioContext();
-            this._audioElement = this.shadowRoot?.querySelector('#audio-el');
-    
-            if (this._audioElement instanceof HTMLAudioElement) {
-                this._audioElement.src = this.src;
-                const track = this._audioContext.createMediaElementSource(this._audioElement);
-                track.connect(this._audioContext.destination);
-
-                setTimeout(() => {
-                    console.log(this._audioElement?.duration);
-                    this._duration = this._audioElement?.duration || 0;
-                }, 1)
-            }
-        }
+        this.init(audioElement as HTMLAudioElement);
     }
 
-    _handleClickPlay(e: MouseEvent) {
-        console.log(e.target);
+    shouldUpdate(changedProperties: Map<string | number | symbol, unknown>): boolean {
+        return !changedProperties.has('_audioElement') && !changedProperties.has('_audioContext');
+    }
+
+    _handleClickPlay() {
         this._togglePlayTrack();
     }
 
-    _startTimeTracker() {
-        this.timeTracker = setInterval(() => {
-            this._updateCurrentTime();
-            this._updatePercentDone();
-        }, 1000)
-    }
-
-    _endTimeTracker() {
-        clearInterval(this.timeTracker) 
-    }
-
-    _updateCurrentTime() {
-        if (this._audioElement) {
-            this.currentTime = this._audioElement.currentTime;
-        }
-    }
-
-    _updatePercentDone() {
-        if (this._audioElement) {
-            const duration = this._audioElement.duration;
-            this.percentDone = (this.currentTime / duration) * 100;
-        }
-    }
-
     _togglePlayTrack() {
-        if (this._audioContext && this._audioElement) {
-            console.log(this._audioContext.state)
-            if (this._audioContext.state === 'suspended') {
-                this._audioContext.resume();
-            }
-
-            if (this.isPlaying) {
-                this._audioElement.pause();
-                this.isPlaying = false;
-                this._endTimeTracker();
-            } else {
-                this._audioElement.play();
-                this.isPlaying = true;
-                this._startTimeTracker();
-            }
-
-            this._updateCurrentTime();
-            this._updatePercentDone();
+        if (this.getIsPlaying()) {
+            this.pause();
+        } else {
+            this.play();
         }
-    }
-
-    _logState() {
-        console.log(this._audioContext);
-        console.log(this._audioElement);
     }
 
     formatTime(seconds: number) {
@@ -129,14 +62,13 @@ export class SoundPlayer extends LitElement {
 
     render() {
         return html`
-            <audio id="audio-el"></audio>
-            <p>${this.formatTime(this.currentTime)}</p>
+            <audio id="${this.id}"></audio>
+            <p>${this.formatTime(this.getCurrentTime())}</p>
             <input type="range" value=${this.percentDone} min="0" max="100">
-            <p>${this.formatTime(this._duration as number)}</p>
-            <button @click=${this._togglePlayTrack} role="switch">
-                ${this.isPlaying ? 'Pause' : 'Play'}
+            <p>${this.formatTime(this.getDuration() as number)}</p>
+            <button @click=${this._handleClickPlay} role="switch">
+                ${this.getIsPlaying() ? '||' : '►'}
             </button>
-            <button @click=${this._logState}>Log State</button>
         `;
     }
 }
