@@ -41,7 +41,7 @@ export class SoundPlayer extends WebAudioPlayer(LitElement) {
     }
 
     _togglePlayTrack() {
-        if (this.getIsPlaying()) {
+        if (this.isPlaying) {
             this.pause();
         } else {
             this.play();
@@ -63,11 +63,11 @@ export class SoundPlayer extends WebAudioPlayer(LitElement) {
     render() {
         return html`
             <audio id="${this.id}"></audio>
-            <p>${this.formatTime(this.getCurrentTime())}</p>
+            <p>${this.formatTime(this.currentTime)}</p>
             <input type="range" value=${this.percentDone} min="0" max="100">
             <p>${this.formatTime(this.getDuration() as number)}</p>
             <button @click=${this._handleClickPlay} role="switch">
-                ${this.getIsPlaying() ? '||' : '►'}
+                ${this.isPlaying ? '||' : '►'}
             </button>
         `;
     }

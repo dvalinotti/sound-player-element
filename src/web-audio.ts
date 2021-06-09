@@ -5,18 +5,15 @@ type Constructor<T> = new (...args: any[]) => T;
 
 export declare class WebAudioPlayerInterface {
   src: string;
+
+  isPlaying: Boolean;
   currentTime: number;
   percentDone: number;
 
   init(audioElement: HTMLAudioElement): void;
   play(): Boolean;
   pause(): Boolean;
-  startTimeTracker(): void;
-  endTimeTracker(): void;
-  updateCurrentTime(): void;
   getDuration(): Number;
-  getCurrentTime(): number;
-  getIsPlaying(): Boolean;
 }
 
 export const WebAudioPlayer =
@@ -25,7 +22,7 @@ export const WebAudioPlayer =
       private currentTimeTracker: any;
 
       @state()
-      protected isPlaying: Boolean = false;
+      isPlaying: Boolean = false;
 
       @state()
       currentTime: number = 0;
@@ -111,22 +108,33 @@ export const WebAudioPlayer =
       }
 
       startTimeTracker() {
-        this.currentTimeTracker = setInterval(() => {
-          this.updateCurrentTime();
-        }, 250);
+        this.currentTimeTracker = setInterval(
+          () => {
+            this.updateProgress();
+          },
+          250
+        );
       }
 
       endTimeTracker() {
         clearInterval(this.currentTimeTracker);
       }
 
+      updateProgress() {
+        this.updateCurrentTime();
+        this.updatePercentDone();
+      }
+
       updateCurrentTime() {
         if (this._audioElement) {
           this.currentTime = this._audioElement.currentTime;
-          console.log(this.currentTime);
+        }
+      }
+      
+      updatePercentDone() {
+        if (this._audioElement) {
           let d = this._duration as number;
-          console.log(this._duration);
-          this.percentDone = this.currentTime / d * 100
+          this.percentDone = this.currentTime / d * 100;
         }
       }
 
