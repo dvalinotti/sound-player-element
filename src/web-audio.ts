@@ -62,13 +62,17 @@ export const WebAudioPlayer =
             
             const track = this._audioContext.createMediaElementSource(this._audioElement);
             track.connect(this._audioContext.destination);
+
+            setTimeout(() => {
+              if (this._audioElement) {
+                this._duration = this._audioElement?.duration;
+              }
+            }, 10);
           }
         }
       }
 
       play() {
-        console.log(this._audioContext);
-        console.log(this._audioElement);
         if (this._audioContext && this._audioElement) {
           this.audioContextResume();
           this._audioElement.play();
@@ -119,8 +123,9 @@ export const WebAudioPlayer =
       updateCurrentTime() {
         if (this._audioElement) {
           this.currentTime = this._audioElement.currentTime;
+          console.log(this.currentTime);
           let d = this._duration as number;
-          console.log(d);
+          console.log(this._duration);
           this.percentDone = this.currentTime / d * 100
         }
       }
