@@ -28,6 +28,9 @@ export const WebAudioPlayer =
       currentTime: number = 0;
 
       @state()
+      currentVolume: number = 1;
+
+      @state()
       percentDone: number = 0;
 
       @property({ attribute: false })
@@ -94,6 +97,13 @@ export const WebAudioPlayer =
         }
 
         return false;
+      }
+
+      setVolume(volume: number) {
+        if (this._audioElement) {
+          this._audioElement.volume = volume;
+          this.currentVolume = volume;
+        }
       }
 
       audioContextResume(): Boolean {
