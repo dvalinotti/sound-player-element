@@ -1,5 +1,5 @@
-import path from "path";
-import { defineConfig } from "vite";
+import path from 'path';
+import {defineConfig} from 'vite';
 
 export default defineConfig({
   build: {
@@ -8,8 +8,8 @@ export default defineConfig({
     assetsDir: '',
     sourcemap: process.env.NODE_ENV === 'production',
     lib: {
-      entry: path.resolve(__dirname, 'src/index.ts'),
-      name: 'SoundPlayer'
-    }
+      entry: path.resolve(__dirname, 'index.ts'),
+      name: 'SoundPlayer',
+    },
   },
 });

@@ -1,0 +1,1008 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/sound-player-element.es.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "t"
+        },
+        {
+          "kind": "variable",
+          "name": "e"
+        },
+        {
+          "kind": "variable",
+          "name": "i"
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "e",
+          "members": [
+            {
+              "kind": "method",
+              "name": "init",
+              "parameters": [
+                {
+                  "name": "t"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "play"
+            },
+            {
+              "kind": "method",
+              "name": "pause"
+            },
+            {
+              "kind": "method",
+              "name": "setVolume",
+              "parameters": [
+                {
+                  "name": "t"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "audioContextResume"
+            },
+            {
+              "kind": "method",
+              "name": "startTimeTracker"
+            },
+            {
+              "kind": "method",
+              "name": "endTimeTracker"
+            },
+            {
+              "kind": "method",
+              "name": "updateProgress"
+            },
+            {
+              "kind": "method",
+              "name": "updateCurrentTime"
+            },
+            {
+              "kind": "method",
+              "name": "updatePercentDone"
+            },
+            {
+              "kind": "method",
+              "name": "getDuration"
+            },
+            {
+              "kind": "method",
+              "name": "getCurrentTime"
+            },
+            {
+              "kind": "method",
+              "name": "getIsPlaying"
+            }
+          ],
+          "superclass": {
+            "name": "t"
+          },
+          "tagName": "t",
+          "customElement": true
+        },
+        {
+          "kind": "variable",
+          "name": "St"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "e",
+          "declaration": {
+            "name": "i",
+            "module": "dist/sound-player-element.es.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "t",
+          "declaration": {
+            "name": "e",
+            "module": "dist/sound-player-element.es.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SoundPlayer",
+          "declaration": {
+            "name": "St",
+            "module": "dist/sound-player-element.es.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/sound-player-element.umd.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "e"
+        },
+        {
+          "kind": "variable",
+          "name": "i"
+        },
+        {
+          "kind": "variable",
+          "name": "t"
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "e",
+          "members": [
+            {
+              "kind": "method",
+              "name": "init",
+              "parameters": [
+                {
+                  "name": "t"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "play"
+            },
+            {
+              "kind": "method",
+              "name": "pause"
+            },
+            {
+              "kind": "method",
+              "name": "setVolume",
+              "parameters": [
+                {
+                  "name": "t"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "audioContextResume"
+            },
+            {
+              "kind": "method",
+              "name": "startTimeTracker"
+            },
+            {
+              "kind": "method",
+              "name": "endTimeTracker"
+            },
+            {
+              "kind": "method",
+              "name": "updateProgress"
+            },
+            {
+              "kind": "method",
+              "name": "updateCurrentTime"
+            },
+            {
+              "kind": "method",
+              "name": "updatePercentDone"
+            },
+            {
+              "kind": "method",
+              "name": "getDuration"
+            },
+            {
+              "kind": "method",
+              "name": "getCurrentTime"
+            },
+            {
+              "kind": "method",
+              "name": "getIsPlaying"
+            }
+          ],
+          "superclass": {
+            "name": "t"
+          },
+          "tagName": "t",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "e",
+          "declaration": {
+            "name": "i",
+            "module": "dist/sound-player-element.umd.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "t",
+          "declaration": {
+            "name": "e",
+            "module": "dist/sound-player-element.umd.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "SoundPlayer",
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "id",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "firstUpdated"
+            },
+            {
+              "kind": "method",
+              "name": "shouldUpdate",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "changedProperties",
+                  "type": {
+                    "text": "Map<string | number | symbol, unknown>"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleClickPlay"
+            },
+            {
+              "kind": "method",
+              "name": "_togglePlayTrack"
+            },
+            {
+              "kind": "method",
+              "name": "formatTime",
+              "parameters": [
+                {
+                  "name": "seconds",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            },
+            {
+              "kind": "field",
+              "name": "currentTimeTracker",
+              "type": {
+                "text": "any"
+              },
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "WebAudioPlayer",
+                "module": "src/web-audio.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "isPlaying",
+              "type": {
+                "text": "Boolean"
+              },
+              "inheritedFrom": {
+                "name": "WebAudioPlayer",
+                "module": "src/web-audio.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "currentTime",
+              "default": "0",
+              "inheritedFrom": {
+                "name": "WebAudioPlayer",
+                "module": "src/web-audio.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "currentVolume",
+              "default": "1",
+              "inheritedFrom": {
+                "name": "WebAudioPlayer",
+                "module": "src/web-audio.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "percentDone",
+              "default": "0",
+              "inheritedFrom": {
+                "name": "WebAudioPlayer",
+                "module": "src/web-audio.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_audioContext",
+              "type": {
+                "text": "AudioContext | undefined"
+              },
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "WebAudioPlayer",
+                "module": "src/web-audio.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_audioElement",
+              "type": {
+                "text": "HTMLAudioElement | null | undefined"
+              },
+              "privacy": "private",
+              "inheritedFrom": {
+                "name": "WebAudioPlayer",
+                "module": "src/web-audio.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_duration",
+              "type": {
+                "text": "Number"
+              },
+              "privacy": "private",
+              "default": "0",
+              "inheritedFrom": {
+                "name": "WebAudioPlayer",
+                "module": "src/web-audio.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "src",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "WebAudioPlayer",
+                "module": "src/web-audio.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "init",
+              "parameters": [
+                {
+                  "name": "audioElement",
+                  "type": {
+                    "text": "HTMLAudioElement"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "WebAudioPlayer",
+                "module": "src/web-audio.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "play",
+              "inheritedFrom": {
+                "name": "WebAudioPlayer",
+                "module": "src/web-audio.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "pause",
+              "inheritedFrom": {
+                "name": "WebAudioPlayer",
+                "module": "src/web-audio.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "setVolume",
+              "parameters": [
+                {
+                  "name": "volume",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "WebAudioPlayer",
+                "module": "src/web-audio.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "audioContextResume",
+              "return": {
+                "type": {
+                  "text": "Boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "WebAudioPlayer",
+                "module": "src/web-audio.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "startTimeTracker",
+              "inheritedFrom": {
+                "name": "WebAudioPlayer",
+                "module": "src/web-audio.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "endTimeTracker",
+              "inheritedFrom": {
+                "name": "WebAudioPlayer",
+                "module": "src/web-audio.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "updateProgress",
+              "inheritedFrom": {
+                "name": "WebAudioPlayer",
+                "module": "src/web-audio.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "updateCurrentTime",
+              "inheritedFrom": {
+                "name": "WebAudioPlayer",
+                "module": "src/web-audio.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "updatePercentDone",
+              "inheritedFrom": {
+                "name": "WebAudioPlayer",
+                "module": "src/web-audio.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getDuration",
+              "return": {
+                "type": {
+                  "text": "Number"
+                }
+              },
+              "inheritedFrom": {
+                "name": "WebAudioPlayer",
+                "module": "src/web-audio.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getCurrentTime",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
+              "inheritedFrom": {
+                "name": "WebAudioPlayer",
+                "module": "src/web-audio.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getIsPlaying",
+              "return": {
+                "type": {
+                  "text": "Boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "WebAudioPlayer",
+                "module": "src/web-audio.ts"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "WebAudioPlayer",
+              "module": "/src/web-audio"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SoundPlayer",
+          "declaration": {
+            "name": "SoundPlayer",
+            "module": "src/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/web-audio.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "WebAudioPlayerInterface",
+          "members": [
+            {
+              "kind": "field",
+              "name": "src",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "isPlaying",
+              "type": {
+                "text": "Boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "currentTime",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "percentDone",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "init",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "audioElement",
+                  "type": {
+                    "text": "HTMLAudioElement"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "play",
+              "return": {
+                "type": {
+                  "text": "Boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "pause",
+              "return": {
+                "type": {
+                  "text": "Boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getDuration",
+              "return": {
+                "type": {
+                  "text": "Number"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "kind": "mixin",
+          "description": "",
+          "name": "WebAudioPlayer",
+          "members": [
+            {
+              "kind": "field",
+              "name": "currentTimeTracker",
+              "type": {
+                "text": "any"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "isPlaying",
+              "type": {
+                "text": "Boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "currentTime",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "currentVolume",
+              "default": "1"
+            },
+            {
+              "kind": "field",
+              "name": "percentDone",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "_audioContext",
+              "type": {
+                "text": "AudioContext | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_audioElement",
+              "type": {
+                "text": "HTMLAudioElement | null | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_duration",
+              "type": {
+                "text": "Number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "src",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "init",
+              "parameters": [
+                {
+                  "name": "audioElement",
+                  "type": {
+                    "text": "HTMLAudioElement"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "play"
+            },
+            {
+              "kind": "method",
+              "name": "pause"
+            },
+            {
+              "kind": "method",
+              "name": "setVolume",
+              "parameters": [
+                {
+                  "name": "volume",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "audioContextResume",
+              "return": {
+                "type": {
+                  "text": "Boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "startTimeTracker"
+            },
+            {
+              "kind": "method",
+              "name": "endTimeTracker"
+            },
+            {
+              "kind": "method",
+              "name": "updateProgress"
+            },
+            {
+              "kind": "method",
+              "name": "updateCurrentTime"
+            },
+            {
+              "kind": "method",
+              "name": "updatePercentDone"
+            },
+            {
+              "kind": "method",
+              "name": "getDuration",
+              "return": {
+                "type": {
+                  "text": "Number"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getCurrentTime",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getIsPlaying",
+              "return": {
+                "type": {
+                  "text": "Boolean"
+                }
+              }
+            }
+          ],
+          "parameters": [
+            {
+              "name": "superClass",
+              "type": {
+                "text": "T"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "WebAudioPlayer",
+          "members": [
+            {
+              "kind": "field",
+              "name": "currentTimeTracker",
+              "type": {
+                "text": "any"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "isPlaying",
+              "type": {
+                "text": "Boolean"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "currentTime",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "currentVolume",
+              "default": "1"
+            },
+            {
+              "kind": "field",
+              "name": "percentDone",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "_audioContext",
+              "type": {
+                "text": "AudioContext | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_audioElement",
+              "type": {
+                "text": "HTMLAudioElement | null | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_duration",
+              "type": {
+                "text": "Number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "src",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "init",
+              "parameters": [
+                {
+                  "name": "audioElement",
+                  "type": {
+                    "text": "HTMLAudioElement"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "play"
+            },
+            {
+              "kind": "method",
+              "name": "pause"
+            },
+            {
+              "kind": "method",
+              "name": "setVolume",
+              "parameters": [
+                {
+                  "name": "volume",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "audioContextResume",
+              "return": {
+                "type": {
+                  "text": "Boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "startTimeTracker"
+            },
+            {
+              "kind": "method",
+              "name": "endTimeTracker"
+            },
+            {
+              "kind": "method",
+              "name": "updateProgress"
+            },
+            {
+              "kind": "method",
+              "name": "updateCurrentTime"
+            },
+            {
+              "kind": "method",
+              "name": "updatePercentDone"
+            },
+            {
+              "kind": "method",
+              "name": "getDuration",
+              "return": {
+                "type": {
+                  "text": "Number"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getCurrentTime",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getIsPlaying",
+              "return": {
+                "type": {
+                  "text": "Boolean"
+                }
+              }
+            }
+          ],
+          "superclass": {
+            "name": "superClass"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "WebAudioPlayerInterface",
+          "declaration": {
+            "name": "WebAudioPlayerInterface",
+            "module": "src/web-audio.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "WebAudioPlayer",
+          "declaration": {
+            "name": "WebAudioPlayer",
+            "module": "src/web-audio.ts"
+          }
+        }
+      ]
+    }
+  ]
+}
